@@ -35,3 +35,14 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### Redis ###
+# Ignore redis binary dump (dump.rdb) files
+
+*.rdb
