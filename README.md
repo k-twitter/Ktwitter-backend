@@ -1,4 +1,4 @@
-# SNS 구축 토이 프로젝트
+# SNS 구축 프로젝트
 twitter, instagram 목표
 # 목표
 경제적 자유  
