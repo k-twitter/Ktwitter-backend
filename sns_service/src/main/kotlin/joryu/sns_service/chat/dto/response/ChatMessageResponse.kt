@@ -3,10 +3,10 @@ package joryu.sns_service.chat.dto.response
 import org.joda.time.DateTime
 
 class ChatMessageResponse(
-    id: String,
-    message: String,
-    profileId: Long,
-    profileName: String,
-    postDateTime: String
+    val id: String,
+    val message: String?,
+    val profileId: Long,
+    val profileName: String,
+    val postDateTime: String
 ){
 }

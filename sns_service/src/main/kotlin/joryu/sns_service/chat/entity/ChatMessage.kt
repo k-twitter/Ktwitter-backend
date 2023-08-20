@@ -10,7 +10,7 @@ import java.util.*
 @Table(name = "chat_message")
 @Entity
 class ChatMessage(
-    val message: String = "",
+    val message: String? = "",
     val profileId: Long? = null,
 
     @Id
