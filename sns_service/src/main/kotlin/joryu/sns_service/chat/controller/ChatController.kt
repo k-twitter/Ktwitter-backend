@@ -17,14 +17,11 @@ class ChatController(
 ) {
     @PostMapping("/api/chat")
     fun createMessage(@RequestBody newMessage: NewMessageRequest): ResponseEntity<Any> {
-        if (newMessage.message.isEmpty()) {
-            return ResponseEntity.badRequest().body("Empty Message now Allow")
-        }
         chatService.create(newMessage)
         return ResponseEntity.ok().build()
     }
 
-    @GetMapping("api/chat")
+    @GetMapping("/api/chat")
     fun getAllMessage(): ResponseEntity<ChatMessageAllResponse> {
         val findAll = chatService.findAll()
         return ResponseEntity.ok(ChatMessageAllResponse(findAll))
