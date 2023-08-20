@@ -25,7 +25,7 @@ class ProfileService(
     }
 
     @Transactional(readOnly = true)
-    fun findOnyById(id: Long): ProfileInfoResponse {
+    fun findOneById(id: Long): ProfileInfoResponse {
         val profile = profileRepository.findById(id)
                 .orElseThrow { ProfileBaseException(ProfileExceptionEnums.PROFILE_NOT_FOUND) }
         return ProfileInfoResponse(profile)
