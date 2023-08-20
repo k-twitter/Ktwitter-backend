@@ -3,6 +3,7 @@ package joryu.sns_service.profile.controller
 import joryu.sns_service.profile.dto.request.ProfileCreateRequest
 import joryu.sns_service.profile.dto.request.ProfileUpdateRequest
 import joryu.sns_service.profile.dto.response.ProfileInfoResponse
+import joryu.sns_service.profile.entity.Profile
 import joryu.sns_service.profile.service.ProfileService
 import lombok.RequiredArgsConstructor
 import org.springframework.http.HttpStatus
@@ -18,24 +19,26 @@ class ProfileApiController(
 ) {
 
     @PostMapping()
-    fun createProfile(@RequestBody profileCreateRequest: ProfileCreateRequest): ResponseEntity<String> {
-        profileService.create(profileCreateRequest)
-        return ResponseEntity("ok", HttpStatus.OK)
+    fun createProfile(@RequestBody profileCreateRequest: ProfileCreateRequest): ResponseEntity<Profile> {
+        val profile = profileService.create(profileCreateRequest)
+        return ResponseEntity(profile, HttpStatus.OK)
     }
 
     @GetMapping("/{id}")
     fun findProfile(@PathVariable id: Long): ResponseEntity<ProfileInfoResponse> {
-        return ResponseEntity(profileService.findOnyById(id), HttpStatus.OK)
+        val profile = profileService.findOnyById(id)
+        return ResponseEntity(profile, HttpStatus.OK)
     }
 
     @PutMapping("/{id}")
     fun updateProfile(@PathVariable id: Long, @RequestBody profileUpdateRequest: ProfileUpdateRequest): ResponseEntity<ProfileInfoResponse> {
-        return ResponseEntity(profileService.update(id, profileUpdateRequest), HttpStatus.OK)
+        val profile = profileService.update(id, profileUpdateRequest)
+        return ResponseEntity(profile, HttpStatus.OK)
     }
 
     @DeleteMapping("/{id}")
-    fun deleteProfile(@PathVariable id: Long): ResponseEntity<String> {
+    fun deleteProfile(@PathVariable id: Long): ResponseEntity<Any> {
         profileService.delete(id)
-        return ResponseEntity("ok", HttpStatus.OK)
+        return ResponseEntity.ok().build()
     }
 }
