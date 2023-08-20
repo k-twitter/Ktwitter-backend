@@ -26,7 +26,7 @@ class ProfileApiController(
 
     @GetMapping("/{id}")
     fun findProfile(@PathVariable id: Long): ResponseEntity<ProfileInfoResponse> {
-        val profile = profileService.findOnyById(id)
+        val profile = profileService.findOneById(id)
         return ResponseEntity(profile, HttpStatus.OK)
     }
 
