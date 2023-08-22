@@ -1,4 +1,4 @@
-package joryu.sns_service.profile.entity
+package joryu.sns_service.common.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners

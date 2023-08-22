@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import joryu.sns_service.profile.entity.BaseEntity
+import joryu.sns_service.common.entity.BaseEntity
 
 @Table(name = "feed")
 @Entity
