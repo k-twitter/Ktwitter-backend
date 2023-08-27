@@ -14,10 +14,6 @@ import joryu.sns_service.profile.entity.Profile
 @Table(name = "feed_like")
 @Entity
 class FeedLike(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", nullable = false)
     val likeMember: Profile,
@@ -26,6 +22,9 @@ class FeedLike(
     @JoinColumn(name = "feed_id", nullable = false)
     val feed: Feed,
 ) : BaseEntity() {
-    constructor() : this(0, Profile(), Feed())
-    constructor(likeMember: Profile, feed: Feed) : this(0, likeMember, feed)
+    constructor() : this(Profile(), Feed())
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0
 }

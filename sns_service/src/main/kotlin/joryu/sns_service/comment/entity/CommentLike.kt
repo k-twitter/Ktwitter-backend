@@ -14,10 +14,6 @@ import joryu.sns_service.profile.entity.Profile
 @Table(name = "comment_like")
 @Entity
 class CommentLike(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", nullable = false)
     val likeMember: Profile,
@@ -26,6 +22,9 @@ class CommentLike(
     @JoinColumn(name = "comment_id", nullable = false)
     val comment: Comment,
 ) : BaseEntity() {
-    constructor() : this(0, Profile(), Comment())
-    constructor(likeMember: Profile, comment: Comment) : this(0, likeMember, comment)
+    constructor() : this(Profile(), Comment())
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0
 }

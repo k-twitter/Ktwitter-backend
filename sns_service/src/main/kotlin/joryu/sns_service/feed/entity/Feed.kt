@@ -11,14 +11,13 @@ import joryu.sns_service.common.entity.BaseEntity
 @Table(name = "feed")
 @Entity
 class Feed(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
-
     content: String,
 ) : BaseEntity() {
-    constructor() : this(0, "")
-    constructor(content: String) : this(0, content)
+    constructor() : this("")
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0
 
     @Column(name = "view_count", nullable = false)
     var viewCount: Long = 0
