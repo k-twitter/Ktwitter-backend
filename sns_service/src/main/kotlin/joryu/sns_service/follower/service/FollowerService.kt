@@ -15,8 +15,8 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @RequiredArgsConstructor
 class FollowerService(
-        val followerRepository: FollowerRepository,
-        val profileRepository: ProfileRepository
+        private val followerRepository: FollowerRepository,
+        private val profileRepository: ProfileRepository
 ) {
 
     @Transactional

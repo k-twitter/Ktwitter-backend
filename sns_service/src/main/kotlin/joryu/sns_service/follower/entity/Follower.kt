@@ -1,6 +1,5 @@
 package joryu.sns_service.follower.entity
 
-import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 import joryu.sns_service.profile.entity.Profile
 
@@ -12,7 +11,6 @@ data class Follower(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long?,
 
-        @JsonBackReference
         @ManyToOne
         @JoinColumn(name = "profile_id")
         val followingProfile: Profile?,

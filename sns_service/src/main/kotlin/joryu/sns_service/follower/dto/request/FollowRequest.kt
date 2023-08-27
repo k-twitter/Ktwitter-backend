@@ -1,4 +1,4 @@
 package joryu.sns_service.follower.dto.request
 
-class FollowRequest(val profileId: Long) {
+data class FollowRequest(val profileId: Long) {
 }

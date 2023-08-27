@@ -1,6 +1,5 @@
 package joryu.sns_service.profile.entity
 
-import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
 import joryu.sns_service.follower.entity.Follower
 import joryu.sns_service.profile.dto.request.ProfileUpdateRequest
@@ -14,7 +13,6 @@ data class Profile(
         val id: Long,
         var name: String,
 
-        @JsonManagedReference
         @OneToMany(mappedBy = "followingProfile")
         val followers: MutableList<Follower> = mutableListOf()
 ) {

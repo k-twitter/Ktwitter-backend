@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
-@RequestMapping("/api/follow")
+@RequestMapping("/follow")
 @RequiredArgsConstructor
 class FollowerController(
-        val followerService: FollowerService
+        private val followerService: FollowerService
 ) {
     @PostMapping("/{followerProfileId}")
     fun follow(@PathVariable("followerProfileId") followerProfileId: Long, @RequestBody followRequest: FollowRequest): ResponseEntity<Any> {
