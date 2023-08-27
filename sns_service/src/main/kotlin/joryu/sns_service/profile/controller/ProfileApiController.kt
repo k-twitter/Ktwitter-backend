@@ -12,10 +12,10 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 @Controller
-@RequestMapping("/api/profile")
+@RequestMapping("/profile")
 @RequiredArgsConstructor
 class ProfileApiController(
-        val profileService: ProfileService
+        private val profileService: ProfileService
 ) {
 
     @PostMapping()
@@ -26,7 +26,7 @@ class ProfileApiController(
 
     @GetMapping("/{id}")
     fun findProfile(@PathVariable id: Long): ResponseEntity<ProfileInfoResponse> {
-        val profile = profileService.findOnyById(id)
+        val profile = profileService.findOneById(id)
         return ResponseEntity(profile, HttpStatus.OK)
     }
 
