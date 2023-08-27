@@ -1,4 +1,4 @@
-package joryu.sns_service.feed.entity
+package joryu.sns_service.post.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -8,9 +8,9 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 import joryu.sns_service.common.entity.BaseEntity
 
-@Table(name = "feed")
+@Table(name = "post")
 @Entity
-class Feed(
+class Post(
     content: String,
 ) : BaseEntity() {
     constructor() : this("")

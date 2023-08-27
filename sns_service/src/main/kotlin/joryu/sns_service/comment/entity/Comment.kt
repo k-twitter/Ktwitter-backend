@@ -9,15 +9,15 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
-import joryu.sns_service.feed.entity.Feed
 import joryu.sns_service.common.entity.BaseEntity
+import joryu.sns_service.post.entity.Post
 
 @Table(name = "comment")
 @Entity
 class Comment(
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "feed_id", nullable = false)
-    val feed: Feed,
+    @JoinColumn(name = "post_id", nullable = false)
+    val post: Post,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
@@ -25,7 +25,7 @@ class Comment(
 
     content: String,
 ) : BaseEntity() {
-    constructor() : this(Feed(), null, "")
+    constructor() : this(Post(), null, "")
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

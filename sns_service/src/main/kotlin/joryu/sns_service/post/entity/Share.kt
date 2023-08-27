@@ -1,4 +1,4 @@
-package joryu.sns_service.feed.entity
+package joryu.sns_service.post.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
@@ -14,10 +14,10 @@ import joryu.sns_service.common.entity.BaseEntity
 @Entity
 class Share(
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "feed_id", nullable = false)
-    val feed: Feed,
+    @JoinColumn(name = "post_id", nullable = false)
+    val post: Post,
 ) : BaseEntity() {
-    constructor() : this(Feed())
+    constructor() : this(Post())
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
