@@ -14,19 +14,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: mirromutth/mysql-action@v1.1
-        with:
-          host port: 33061 
-          container port: 33061 
-          character set server: 'utf8' 
-          collation server: 'utf8mb4_unicode_ci' 
-          mysql version: '8.0' 
-          mysql database: 'sns-db' 
-          mysql root password: 1234
-
-
+    services:
+      mysql:  
+        image: "mysql:8.0"
+        env:   
+          MYSQL_ROOT_PASSWORD: 1234
+          MYSQL_DATABASE: sns-db
+        ports: 
+          - 33061:3306
     
+    steps:
       - uses: actions/checkout@v3      
 
       - name: Set up JDK 17
