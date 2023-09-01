@@ -26,4 +26,8 @@ class Post(
     @Column(name = "content", nullable = false, length = 1000)
     var content: String = content
         private set
+
+    fun changeContent(content: String) {
+        this.content = content
+    }
 }
