@@ -9,15 +9,20 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
 import joryu.sns_service.common.entity.BaseEntity
+import joryu.sns_service.profile.entity.Profile
 
 @Table(name = "share")
 @Entity
 class Share(
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "profile_id", nullable = false)
+    val shareMember: Profile,
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     val post: Post,
 ) : BaseEntity() {
-    constructor() : this(Post())
+    constructor() : this(Profile(), Post())
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
