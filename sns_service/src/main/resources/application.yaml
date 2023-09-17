@@ -13,3 +13,26 @@ spring:
         show_sql: true
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
+  profiles:
+    group:
+      dev: "dev"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=MySQL;
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    logging.level:
+      org.hibernate.SQL: debug
+    properties:
+      hibernate:
+        show_sql: true
