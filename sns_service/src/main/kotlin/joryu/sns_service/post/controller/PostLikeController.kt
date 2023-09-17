@@ -1,6 +1,6 @@
 package joryu.sns_service.post.controller
 
-import joryu.sns_service.post.dto.resp.PostLikeCountResponse
+import joryu.sns_service.post.dto.response.PostLikeCountResponse
 import joryu.sns_service.post.service.PostLikeService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping

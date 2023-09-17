@@ -1,4 +1,4 @@
-package joryu.sns_service.comment.dto.req
+package joryu.sns_service.comment.dto.request
 
 data class CommentCreateRequest(
     val postId: Long,

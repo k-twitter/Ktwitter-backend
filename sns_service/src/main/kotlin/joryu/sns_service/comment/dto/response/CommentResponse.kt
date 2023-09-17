@@ -1,4 +1,4 @@
-package joryu.sns_service.comment.dto.resp
+package joryu.sns_service.comment.dto.response
 
 import joryu.sns_service.comment.entity.Comment
 

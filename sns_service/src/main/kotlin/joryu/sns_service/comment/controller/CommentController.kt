@@ -1,8 +1,8 @@
 package joryu.sns_service.comment.controller
 
-import joryu.sns_service.comment.dto.req.CommentCreateRequest
-import joryu.sns_service.comment.dto.req.CommentUpdateRequest
-import joryu.sns_service.comment.dto.resp.CommentResponse
+import joryu.sns_service.comment.dto.request.CommentCreateRequest
+import joryu.sns_service.comment.dto.request.CommentUpdateRequest
+import joryu.sns_service.comment.dto.response.CommentResponse
 import joryu.sns_service.comment.service.CommentService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping

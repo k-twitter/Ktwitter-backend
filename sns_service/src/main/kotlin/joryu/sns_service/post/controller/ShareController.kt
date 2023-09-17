@@ -1,6 +1,6 @@
 package joryu.sns_service.post.controller
 
-import joryu.sns_service.post.dto.resp.PostResponse
+import joryu.sns_service.post.dto.response.PostResponse
 import joryu.sns_service.post.service.ShareService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping

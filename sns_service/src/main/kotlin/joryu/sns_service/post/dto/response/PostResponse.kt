@@ -1,4 +1,4 @@
-package joryu.sns_service.post.dto.resp
+package joryu.sns_service.post.dto.response
 
 import joryu.sns_service.post.entity.Post
 
