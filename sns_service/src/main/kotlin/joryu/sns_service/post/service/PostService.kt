@@ -15,8 +15,11 @@ class PostService(
         return postRepository.save(Post(content)).id
     }
 
+    @Transactional
     fun findOneById(id: Long): Post {
-        return postRepository.findById(id).orElseThrow()
+        val findPost = postRepository.findById(id).orElseThrow()
+        findPost.addViewCount()
+        return findPost
     }
 
     @Transactional

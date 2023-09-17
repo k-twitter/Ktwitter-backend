@@ -30,4 +30,8 @@ class Post(
     fun changeContent(content: String) {
         this.content = content
     }
+
+    fun addViewCount() {
+        this.viewCount += 1
+    }
 }
