@@ -21,11 +21,6 @@ class PostLikeService(
         postLikeRepository.save(PostLike(member, post))
     }
 
-    fun getCountByPost(postId: Long): Long {
-        val post = postRepository.findById(postId).orElseThrow()
-        return postLikeRepository.countByPost(post)
-    }
-
     @Transactional
     fun cancelLike(postId: Long, memberId: Long) {
         val member = profileRepository.findById(memberId).orElseThrow()

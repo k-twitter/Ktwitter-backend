@@ -21,12 +21,6 @@ class PostLikeController(
         return ResponseEntity.noContent().build()
     }
 
-    @GetMapping("/posts/{postId}")
-    fun getCountByPost(@PathVariable postId: Long): ResponseEntity<PostLikeCountResponse> {
-        val likeCount = postLikeService.getCountByPost(postId)
-        return ResponseEntity.ok(PostLikeCountResponse(likeCount))
-    }
-
     @DeleteMapping("/posts/{postId}/member/{memberId}")
     fun cancelLike(@PathVariable postId: Long, @PathVariable memberId: Long): ResponseEntity<Void> {
         postLikeService.cancelLike(postId, memberId)
