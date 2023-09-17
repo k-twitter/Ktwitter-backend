@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional(readOnly = true)
 class PostService(
-    val postRepository: PostRepository
+    private val postRepository: PostRepository
 ) {
     @Transactional
     fun create(content: String): Long {

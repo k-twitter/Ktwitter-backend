@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional(readOnly = true)
 class CommentService(
-    val postRepository: PostRepository,
-    val commentRepository: CommentRepository,
+    private val postRepository: PostRepository,
+    private val commentRepository: CommentRepository,
 ) {
     @Transactional
     fun create(postId: Long, parentCommentId: Long?, content: String): Long {

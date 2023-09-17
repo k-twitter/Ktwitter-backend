@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional(readOnly = true)
 class PostLikeService(
-    val postLikeRepository: PostLikeRepository,
-    val profileRepository: ProfileRepository,
-    val postRepository: PostRepository,
+    private val postLikeRepository: PostLikeRepository,
+    private val profileRepository: ProfileRepository,
+    private val postRepository: PostRepository,
 ) {
     @Transactional
     fun like(postId: Long, memberId: Long) {

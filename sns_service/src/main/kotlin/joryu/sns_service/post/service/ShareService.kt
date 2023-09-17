@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional(readOnly = true)
 class ShareService(
-    val shareRepository: ShareRepository,
-    val profileRepository: ProfileRepository,
-    val postRepository: PostRepository,
+    private val shareRepository: ShareRepository,
+    private val profileRepository: ProfileRepository,
+    private val postRepository: PostRepository,
 ) {
     @Transactional
     fun share(postId: Long, memberId: Long) {
