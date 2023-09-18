@@ -1,9 +1,12 @@
 package joryu.sns_service.post.controller
 
+import jakarta.servlet.http.HttpServletRequest
 import joryu.sns_service.post.dto.request.PostCreateRequest
 import joryu.sns_service.post.dto.request.PostUpdateRequest
 import joryu.sns_service.post.dto.response.PostResponse
 import joryu.sns_service.post.service.PostService
+import joryu.sns_service.utils.IpUtils
+import org.springframework.http.HttpRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -27,8 +30,8 @@ class PostController(
     }
 
     @GetMapping("/{id}")
-    fun findPost(@PathVariable id: Long): ResponseEntity<PostResponse> {
-        val post = postService.findOneById(id)
+    fun findPost(@PathVariable id: Long, httpServletRequest: HttpServletRequest): ResponseEntity<PostResponse> {
+        val post = postService.findOneById(id, IpUtils.getClientIp(httpServletRequest))
         return ResponseEntity.ok(PostResponse(post))
     }
 

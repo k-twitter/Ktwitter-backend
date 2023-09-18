@@ -11,7 +11,7 @@ data class PostResponse(
     constructor(post: Post) : this(
         id = post.id,
         content = post.content,
-        viewCount = post.viewCount,
+        viewCount = post.getViewCount(),
         likeCount = post.getLikeCount(),
     )
 }

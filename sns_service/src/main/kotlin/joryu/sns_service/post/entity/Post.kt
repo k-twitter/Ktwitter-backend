@@ -1,5 +1,6 @@
 package joryu.sns_service.post.entity
 
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -23,9 +24,9 @@ class Post(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
 
-    @Column(name = "view_count", nullable = false)
-    var viewCount: Long = 0
-        private set
+
+    @OneToMany(mappedBy = "post", cascade = [CascadeType.REMOVE])
+    private val postViews: List<PostView> = listOf()
 
     @Column(name = "content", nullable = false, length = 1000)
     var content: String = content
@@ -38,8 +39,8 @@ class Post(
         this.content = content
     }
 
-    fun addViewCount() {
-        this.viewCount += 1
+    fun getViewCount(): Long {
+        return Hibernate.size(postViews).toLong()
     }
 
     fun getLikeCount(): Long {
