@@ -6,7 +6,7 @@ import joryu.sns_service.profile.entity.Profile
 
 @Table(name = "follow")
 @Entity
-data class Follow(
+class Follow(
         @Id
         @Column(name = "follow_id")
         @GeneratedValue(strategy = GenerationType.IDENTITY)

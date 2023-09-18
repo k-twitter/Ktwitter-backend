@@ -4,15 +4,13 @@ import joryu.sns_service.profile.dto.request.ProfileCreateRequest
 import joryu.sns_service.profile.dto.request.ProfileUpdateRequest
 import joryu.sns_service.profile.dto.response.AllProfileResponse
 import joryu.sns_service.profile.dto.response.ProfileInfoResponse
-import joryu.sns_service.profile.entity.Profile
 import joryu.sns_service.profile.service.ProfileService
 import lombok.RequiredArgsConstructor
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
-@Controller
+@RestController
 @RequestMapping("/profile")
 @RequiredArgsConstructor
 class ProfileApiController(

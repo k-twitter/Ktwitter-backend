@@ -5,10 +5,9 @@ import joryu.sns_service.follow.dto.request.UnFollowRequest
 import joryu.sns_service.follow.service.FollowService
 import lombok.RequiredArgsConstructor
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
-@Controller
+@RestController
 @RequestMapping("/follow")
 @RequiredArgsConstructor
 class FollowController(

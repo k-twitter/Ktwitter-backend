@@ -7,7 +7,7 @@ import joryu.sns_service.profile.dto.request.ProfileUpdateRequest
 
 @Table(name = "profile")
 @Entity
-data class Profile(
+class Profile(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "profile_id")
