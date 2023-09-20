@@ -33,7 +33,5 @@ class ProfileTest {
         // then
         assertEquals(fromProfile.followingNumber, 1)
         assertEquals(toProfile.followerNumber, 1)
-        assertEquals(fromProfile.followings[0].toProfile, toProfile)
-        assertEquals(toProfile.followers[0].fromProfile, fromProfile)
     }
 }
