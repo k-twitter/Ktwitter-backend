@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/follow")
-@RequiredArgsConstructor
 class FollowController(
         private val followService: FollowService
 ) {

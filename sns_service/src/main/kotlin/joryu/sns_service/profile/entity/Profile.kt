@@ -32,12 +32,10 @@ class Profile(
         this.name = profileUpdateRequest.name
     }
     fun addFollower(follow: Follow) {
-        followers.add(follow)
         this.followerNumber++
     }
 
     fun addFollowing(following: Follow) {
-        followings.add(following)
         this.followingNumber++
     }
 }
