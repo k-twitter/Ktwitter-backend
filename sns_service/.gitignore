@@ -46,3 +46,10 @@ out/
 # Ignore redis binary dump (dump.rdb) files
 
 *.rdb
+
+### prometheus ###
+prometheus/config/**.log
+prometheus/volume/data/
+
+### grafana ###
+grafana/
