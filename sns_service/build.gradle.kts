@@ -29,6 +29,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+
+	implementation ("net.logstash.logback:logstash-logback-encoder:7.3")
+	implementation ("io.github.microutils:kotlin-logging:3.0.5")
+
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
