@@ -10,3 +10,47 @@ services:
       MYSQL_DATABASE: sns-db
       MYSQL_ROOT_PASSWORD: 1234
     command: [ '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+
+  logstash:
+    image: "docker.elastic.co/logstash/logstash:8.10.2"
+    container_name: sns-logstash
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./infra/logstash/pipeline:/usr/share/logstash/pipeline
+      - ./infra/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+    depends_on:
+      - elasticsearch
+
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:8.10.2"
+    container_name: sns-elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: single-node
+    deploy:
+      resources:
+        limits:
+          memory: 4GB
+    volumes:
+      - elasticsearch-volume:/usr/share/elasticsearch/data
+
+  kibana:
+    image: "docker.elastic.co/kibana/kibana:8.10.2"
+    container_name: sns-kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    volumes:
+      - kibana-volume:/usr/share/kibana/data
+      - ./infra/kibana/config/kibana.yaml:/usr/share/kibana/config/kibana.yml
+
+
+volumes:
+  elasticsearch-volume:
+    external: false
+  kibana-volume:
+    external: false
