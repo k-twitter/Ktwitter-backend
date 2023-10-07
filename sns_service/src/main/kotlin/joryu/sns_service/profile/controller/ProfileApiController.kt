@@ -5,21 +5,25 @@ import joryu.sns_service.profile.dto.request.ProfileUpdateRequest
 import joryu.sns_service.profile.dto.response.AllProfileResponse
 import joryu.sns_service.profile.dto.response.ProfileInfoResponse
 import joryu.sns_service.profile.service.ProfileService
-import lombok.RequiredArgsConstructor
+import mu.KLogger
+import mu.KotlinLogging
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/profile")
-@RequiredArgsConstructor
 class ProfileApiController(
-        private val profileService: ProfileService
+        private val profileService: ProfileService,
 ) {
+    val logger: KLogger = KotlinLogging.logger {}
 
     @PostMapping()
     fun createProfile(@RequestBody profileCreateRequest: ProfileCreateRequest): ResponseEntity<ProfileInfoResponse> {
         val profileInfo = profileService.create(profileCreateRequest)
+        logger.info { "Hello World" }
+        logger.error { "Error" }
+        logger.warn { "Warn" }
         return ResponseEntity(profileInfo, HttpStatus.OK)
     }
 
