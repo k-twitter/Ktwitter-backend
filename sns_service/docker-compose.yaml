@@ -48,6 +48,30 @@ services:
       - kibana-volume:/usr/share/kibana/data
       - ./infra/kibana/config/kibana.yaml:/usr/share/kibana/config/kibana.yml
 
+  
+  prometheus:
+    image: "prom/prometheus:v2.47.0"
+    container_name: prometheus
+    volumes:
+      - ./prometheus/config:/etc/prometheus
+      - ./prometheus/volume:/prometheus
+    ports:
+      - "9091:9090"
+    command:
+      - '--web.enable-lifecycle' # api 재시작없이 설정파일들을 reload 할 수 있게 해줌
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+    restart: always
+
+  grafana:
+    image: "grafana/grafana:9.4.7"
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./grafana/volume:/var/lib/grafana
+    restart: always
 
 volumes:
   elasticsearch-volume:
