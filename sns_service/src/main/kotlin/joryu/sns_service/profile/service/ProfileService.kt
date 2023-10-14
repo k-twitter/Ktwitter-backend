@@ -10,6 +10,8 @@ import joryu.sns_service.profile.exception.ProfileBaseException
 import joryu.sns_service.profile.exception.ProfileExceptionEnums
 import joryu.sns_service.profile.repository.ProfileRepository
 import lombok.RequiredArgsConstructor
+import mu.KLogger
+import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -19,6 +21,8 @@ class ProfileService(
         private val profileRepository: ProfileRepository,
         private val followRepository: FollowRepository
 ) {
+    val log: KLogger = KotlinLogging.logger {}
+
 
     @Transactional
     fun create(profileCreateRequest: ProfileCreateRequest): ProfileInfoResponse {
