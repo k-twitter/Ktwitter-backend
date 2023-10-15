@@ -2,11 +2,14 @@ const stompClient = new StompJs.Client({
     brokerURL: 'ws://localhost:8080/ws-stomp'
 });
 
+// var channelId = ""
+
 stompClient.onConnect = (frame) => {
     setConnected(true);
     console.log('Connected: ' + frame);
-    stompClient.subscribe('/sub/greetings', (greeting) => {
-        showGreeting(JSON.parse(greeting.body).content);
+    stompClient.subscribe('/sub/chat/channel/' + $("#channelId").val(), (message) => {
+        console.log(JSON.parse(message.body))
+        showMessage(JSON.parse(message.body).content);
     });
 };
 
@@ -43,12 +46,18 @@ function disconnect() {
 
 function sendName() {
     stompClient.publish({
-        destination: "/pub/hello",
-        body: JSON.stringify({'name': $("#name").val()})
+        destination: "/pub/chat/message",
+        body: JSON.stringify(
+            {
+                "channelId": $("#channelId").val(),
+                "sender" : $("#name").val(),
+                "content" : $("#content").val()
+            }
+        )
     });
 }
 
-function showGreeting(message) {
+function showMessage(message) {
     $("#greetings").append("<tr><td>" + message + "</td></tr>");
 }
 

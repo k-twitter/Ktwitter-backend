@@ -38,6 +38,12 @@ class ProfileService(
         return ProfileInfoResponse(profile)
     }
 
+    @Transactional(readOnly = true)
+    fun findAllByIdIn(ids: List<Long>): List<ProfileInfoResponse> {
+        return profileRepository.findAllByIdIn(ids)
+            .map { p -> ProfileInfoResponse(p) }
+    }
+
     @Transactional
     fun update(id: Long, profileUpdateRequest: ProfileUpdateRequest): ProfileInfoResponse {
         val profile = profileRepository.findById(id)
