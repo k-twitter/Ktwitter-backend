@@ -1,6 +1,7 @@
 package joryu.sns_service.profile.entity
 
 import jakarta.persistence.*
+import joryu.sns_service.channel.entity.Channel
 import joryu.sns_service.channel.entity.ChannelProfile
 import joryu.sns_service.common.entity.BaseEntity
 import joryu.sns_service.follow.entity.Follow
@@ -44,8 +45,8 @@ class Profile(
         this.followingNumber++
     }
 
-    fun addChannel(channelProfile: ChannelProfile) {
-        channelProfiles.add(channelProfile)
+    fun addChannel(channel: Channel) {
+        channelProfiles.add(ChannelProfile(channel, this))
     }
 }
 

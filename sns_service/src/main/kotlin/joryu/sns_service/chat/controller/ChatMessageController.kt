@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller
 class ChatMessageController(
     private val chatPublisher: ChatPublisher
 ) {
-
     /**
      * /pub/chat/message 로 들어오는 메시징을 처리한다.
      */

@@ -15,20 +15,21 @@ class Channel(
     val channelType: ChannelType = ChannelType.PERSONAL
 ) : Serializable {
     @Id
+    @Column(name = "channel_id")
     val id: String = UUID.randomUUID().toString()
 
     @OneToMany(mappedBy = "channel")
-    val channelUsers: MutableList<ChannelProfile> = mutableListOf()
+    val channelProfiles: MutableList<ChannelProfile> = mutableListOf()
 
     @Column(name = "channel_name")
     var channelName: String = channelName
         private set
 
-    fun changeChannelName(newName: String) {
+    fun updateChannelName(newName: String) {
         channelName = newName
     }
 
-    fun addUserToChannel(user: ChannelProfile) {
-        channelUsers.add(user)
+    fun addProfileToChannel(profile: ChannelProfile) {
+        channelProfiles.add(profile)
     }
 }

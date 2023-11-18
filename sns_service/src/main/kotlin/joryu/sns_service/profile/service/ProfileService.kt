@@ -41,7 +41,7 @@ class ProfileService(
     @Transactional(readOnly = true)
     fun findAllByIdIn(ids: List<Long>): List<ProfileInfoResponse> {
         return profileRepository.findAllByIdIn(ids)
-            .map { p -> ProfileInfoResponse(p) }
+            .map { profile -> ProfileInfoResponse(profile) }
     }
 
     @Transactional
