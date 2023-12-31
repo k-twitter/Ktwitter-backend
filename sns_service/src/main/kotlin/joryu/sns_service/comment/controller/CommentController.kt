@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.net.URI
 
 @RestController
-@RequestMapping("/comments")
+@RequestMapping("/api/comments")
 class CommentController(
     private val commentService: CommentService
 ) {
