@@ -4,7 +4,6 @@ spring:
     password: 1234
     url: jdbc:mysql://localhost:33061/sns-db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useLegacyDatetimeCode=false
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     hibernate:
       ddl-auto: create
@@ -13,9 +12,37 @@ spring:
         show_sql: true
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
+  profiles:
+    group:
+      dev: "local"
+    active: local
 
 management:
   endpoints:
     web:
       exposure:
         include: "prometheus"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "local"
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=MySQL;
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    logging.level:
+      org.hibernate.SQL: debug
+    properties:
+      hibernate:
+        show_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
